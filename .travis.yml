@@ -1,0 +1,15 @@
+git:
+  depth: 1
+branches:
+  except: /^v\d/
+language: node_js
+node_js: stable
+env:
+  global:
+    secure: fjgwe1dLx0dXW3CX6cIOLTh/EGXm5AXxzO0Eujyy1h4upnQB31uyPC+HAmHixs4AqhLq25avd2ZmY9uYNUlct20j/uxESXRy9tZQucYpSelg4TliHLPfW3k7trY7ZbrZTdzToBXDSr3c88ehjG64ZaKuMXUSbx2nUnOpdiJsJnjqpq97qnkMTi6LNKG33X3JVvU6hd5Fwj39qPyY7QAITdr8xNrtB+6iegKdYbSNPerkc6JgbonVHB2B3lmUZkMg+M/3dGR+IO7PXxT7rCXi5jvQjmOfn8bzKWJ81tOd9OhneymjbwpUrVWYXYKwZ/Z58J+PUCw+rQdBD7Iifxvuyujy1Pom58VUdKI+seitmUHlQuesw4VdoHdI02WWR1NgPMPwe8CsMcBrhgDXBJpyv0njjcLNqvRZHz+gGpFVNU2j4hHZQlmqk10P6IyexhmJ8QZqOkyn/RZpPChxExeaYmbPocZQ2ILnwGGtSUGRcbCJ2Sqzm3bHVmWmfN4sR0q+puHiSHdHAZPHFZYD1FbrOrKQXeI63tOAggHEhUBQDXhimmbGUevnefSQCD2kSyQ9h8CXNBoowKlkJK1C8cYLciE4L5W9zzQqTB44Js56UCkCX9S8PKr8HiBudb/o2g0WGqgCRPHOQ8q7QU9Nym3CI4crUo/bFwTZ5NI+CYwdejs=
+script:
+  - npm run-script pretest
+  - npm run-script coverage
+after_script:
+  - npm install istanbul-coveralls
+  - node node_modules/.bin/istanbul-coveralls
