@@ -68,7 +68,7 @@ module.exports = function ghUserEvents(user, options) {
     'user-agent': 'https://github.com/shinnn/github-user-events'
   }, options.headers);
 
-  const urlPath = `users/${user}/events`;
+  const urlPath = `users/${user}/events${options.publicOnly ? '/public' : ''}`;
 
   options = ghifyRequestOptions(options);
 
