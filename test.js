@@ -45,7 +45,7 @@ test('ghUserEvents()', t => {
   ghUserEvents('9'.repeat(99), {token: process.env.TOKEN_FOR_TEST}).then(t.fail, err => {
     t.strictEqual(
       err.message,
-      'Not Found',
+      '404 Not Found',
       'should fail when it cannot find the user.'
     );
     t.strictEqual(
@@ -63,7 +63,7 @@ test('ghUserEvents()', t => {
   }).then(t.fail, err => {
     t.strictEqual(
       err.message,
-      'Bad credentials',
+      '401 Unauthorized (Bad credentials)',
       'should fail when the token is not valid.'
     );
     t.deepEqual(

@@ -6,20 +6,9 @@
 
 const arrFilter = require('arr-filter');
 const arrReduce = require('arr-reduce');
-const fettuccine = require('fettuccine');
 const filledArray = require('filled-array');
-const ghifyRequestOptions = require('ghify-request-options');
+const ghGet = require('gh-get');
 const isNaturalNumber = require('is-natural-number');
-
-function createInvalidBooleanOptionError(options, propertyName) {
-  return new TypeError(
-    String(options[propertyName]) +
-    ' is not a Boolean value. `' +
-    propertyName +
-    '` option must be a Boolean value.' +
-    ' (`false` by default)'
-  );
-}
 
 const maxPageSizeErrMsg = '`maxPageSize` option must be a number of pages ' +
                           'no fewer than 1 and no greater than 10. ' +
@@ -45,11 +34,11 @@ module.exports = function ghUserEvents(user, options) {
   }, options);
 
   if (typeof options.publicOnly !== 'boolean') {
-    return Promise.reject(createInvalidBooleanOptionError(options, 'publicOnly'));
-  }
-
-  if (typeof options.verbose !== 'boolean') {
-    return Promise.reject(createInvalidBooleanOptionError(options, 'verbose'));
+    return Promise.reject(new TypeError(
+      String(options.publicOnly) +
+      ' is not a Boolean value. `publicOnly` option must be a Boolean value.' +
+      ' (`false` by default)'
+    ));
   }
 
   if (options.maxPageSize <= 0) {
@@ -70,23 +59,11 @@ module.exports = function ghUserEvents(user, options) {
 
   const urlPath = `users/${user}/events${options.publicOnly ? '/public' : ''}`;
 
-  options = ghifyRequestOptions(options);
-
   return Promise.all(filledArray(function createRequestUrl(index) {
-    return fettuccine(`${urlPath}?page=${index + 1}`, options);
+    return ghGet(`${urlPath}?page=${index + 1}`, options);
   }, options.maxPageSize))
   .then(function joinUserEvents(responses) {
     return Promise.resolve(arrReduce(responses, (arr, response) => {
-      if (typeof response.body.message === 'string') {
-        const error = new Error(response.body.message);
-
-        if (options.verbose) {
-          error.response = response;
-        }
-
-        throw error;
-      }
-
       arr.push(...arrFilter(response.body, function removeDuplicates(event) {
         return !arr.some(el => el.id === event.id);
       }));

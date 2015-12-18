@@ -34,9 +34,8 @@
   "dependencies": {
     "arr-filter": "^1.1.1",
     "arr-reduce": "^1.0.1",
-    "fettuccine": "^1.0.1",
     "filled-array": "^1.1.0",
-    "ghify-request-options": "^1.0.0",
+    "gh-get": "^1.0.0",
     "is-natural-number": "^2.0.0"
   },
   "devDependencies": {

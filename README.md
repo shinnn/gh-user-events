@@ -65,7 +65,7 @@ const ghUserEvents = require('gh-user-events');
 ### ghUserEvents(*username* [, *options*])
 
 *username*: `String` (a Github username, for example [https://github.com/shinnn](https://github.com/shinnn) → `'shinnn'`)  
-*options*: `Object` ([`Request` options](https://github.com/request/request#requestoptions-callback) and [the](https://github.com/shinnn/gh-user-events#optionstoken) [additional](https://github.com/shinnn/gh-user-events#optionstoken#optionsmaxpagesize) [ones](https://github.com/shinnn/gh-user-events#optionspubliconly))  
+*options*: `Object` ([`gh-get` options](https://github.com/shinnn/gh-get#options) and the [additional](https://github.com/shinnn/gh-user-events#optionstoken#optionsmaxpagesize) [ones](https://github.com/shinnn/gh-user-events#optionspubliconly))  
 Return: [`Promise`](http://www.ecma-international.org/ecma-262/6.0/#sec-promise-constructor) instance
 
 It creates API requests to get the [list of events performed by the specific Github user](https://developer.github.com/v3/activity/events/#list-events-performed-by-a-user).
@@ -73,13 +73,6 @@ It creates API requests to get the [list of events performed by the specific Git
 When it gets the list successfully, the promise will be [*fulfilled*](https://promisesaplus.com/#point-26) with an array of event information objects.
 
 When one of the request fails, the promise will be [*rejected*](https://promisesaplus.com/#point-30) with an error.
-
-#### options.token
-
-Type: `String`  
-Default: `process.env.GITHUB_TOKEN`
-
-Use specific [GitHub access token](https://github.com/blog/1509-personal-api-tokens).
 
 #### options.maxPageSize
 
@@ -100,28 +93,6 @@ Type: `Boolean`
 Default: `false`
 
 `true` restricts the events to [only public ones](https://developer.github.com/v3/activity/events/#list-public-events-performed-by-a-user) even if you are authenticated as the given user.
-
-#### options.verbose
-
-Type: `Boolean`  
-Default: `false`
-
-`true` adds an [`http.IncomingMessage`](https://nodejs.org/api/http.html#http_http_incomingmessage) object to the error message as `response` property.
-
-```javascript
-ghUserEvents('shinnn', {token: 'invalid_token'}).then(err => {
-  err.message; //=> 'Bad credentials'
-  'response' in error; //=> false
-});
-
-ghUserEvents('shinnn', {
-  token: 'invalid_token',
-  verbose: true
-}).then(err => {
-  err.message; //=> 'Bad credentials'
-  err.response; //=> {statusCode: 401, body: { ... }, headers: { ... }, ...}
-});
-```
 
 ## License
 
