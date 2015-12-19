@@ -1,6 +1,6 @@
 {
   "name": "gh-user-events",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Get the list of events on Github performed by a user",
   "repository": "shinnn/gh-user-events",
   "author": "Shinnosuke Watanabe (https://github.com/shinnn)",
