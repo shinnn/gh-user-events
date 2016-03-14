@@ -11,7 +11,7 @@ Get the list of [events](https://developer.github.com/v3/activity/events/#events
 ```javascript
 const ghUserEvents = require('gh-user-events');
 
-ghUserEvents('shinnn', events => console.log(events));
+ghUserEvents('shinnn').then(events => console.log(events));
 ```
 
 ```javascript
@@ -96,6 +96,6 @@ Default: `false`
 
 ## License
 
-Copyright (c) 2015 [Shinnosuke Watanabe](https://github.com/shinnn)
+Copyright (c) 2015 - 2016 [Shinnosuke Watanabe](https://github.com/shinnn)
 
 Licensed under [the MIT License](./LICENSE).
