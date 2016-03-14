@@ -34,7 +34,7 @@ test('ghUserEvents()', t => {
     );
   }).catch(t.fail);
 
-  ghUserEvents('linus', {token: process.env.TOKEN_FOR_TEST}).then(events => {
+  ghUserEvents('a00000', {token: process.env.TOKEN_FOR_TEST}).then(events => {
     t.deepEqual(
       events,
       [],
