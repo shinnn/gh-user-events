@@ -127,7 +127,7 @@ test('ghUserEvents()', t => {
   }).catch(t.fail);
 });
 
-test('isGistStarred() with `GITHUB_TOKEN` environment variable', t => {
+test('ghUserEvents() with `GITHUB_TOKEN` environment variable', t => {
   t.plan(1);
 
   process.env.GITHUB_TOKEN = process.env.TOKEN_FOR_TEST;
