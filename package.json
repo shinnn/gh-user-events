@@ -35,14 +35,14 @@
     "arr-filter": "^1.1.1",
     "arr-reduce": "^1.0.1",
     "filled-array": "^1.1.0",
-    "gh-get": "^1.0.0",
-    "is-natural-number": "^2.0.0"
+    "gh-get": "^1.0.1",
+    "is-natural-number": "^4.0.1"
   },
   "devDependencies": {
-    "@shinnn/eslint-config-node": "^2.0.0",
-    "eslint": "^2.4.0",
-    "istanbul": "^0.4.2",
+    "@shinnn/eslint-config-node": "^3.0.0",
+    "eslint": "^3.1.1",
+    "istanbul": "^0.4.4",
     "tap-spec": "^4.1.1",
-    "tape": "^4.5.1"
+    "tape": "^4.6.0"
   }
 }
