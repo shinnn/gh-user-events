@@ -1,48 +1,42 @@
 {
-  "name": "gh-user-events",
-  "version": "1.0.3",
-  "description": "Get the list of events on Github performed by a user",
-  "repository": "shinnn/gh-user-events",
-  "author": "Shinnosuke Watanabe (https://github.com/shinnn)",
-  "scripts": {
-    "pretest": "eslint --fix --config @shinnn/node index.js test.js",
-    "test": "node --throw-deprecation --track-heap-objects test.js | tap-spec",
-    "coverage": "istanbul cover test.js"
-  },
-  "license": "MIT",
-  "files": [
-    "index.js"
-  ],
-  "keywords": [
-    "github",
-    "user",
-    "event",
-    "events",
-    "list",
-    "array",
-    "api",
-    "github-api",
-    "get",
-    "request",
-    "promise",
-    "promises",
-    "then",
-    "async",
-    "asynchronous",
-    "asynchronously"
-  ],
-  "dependencies": {
-    "arr-filter": "^1.1.1",
-    "arr-reduce": "^1.0.1",
-    "filled-array": "^1.1.0",
-    "gh-get": "^1.0.1",
-    "is-natural-number": "^4.0.1"
-  },
-  "devDependencies": {
-    "@shinnn/eslint-config-node": "^3.0.0",
-    "eslint": "^3.1.1",
-    "istanbul": "^0.4.4",
-    "tap-spec": "^4.1.1",
-    "tape": "^4.6.0"
-  }
+	"name": "gh-user-events",
+	"version": "1.0.3",
+	"description": "Get the list of events on Github performed by a user",
+	"repository": "shinnn/gh-user-events",
+	"author": "Shinnosuke Watanabe (https://github.com/shinnn)",
+	"scripts": {
+		"pretest": "eslint .",
+		"test": "nyc node test.js"
+	},
+	"license": "MIT",
+	"files": [
+		"index.js"
+	],
+	"keywords": [
+		"github",
+		"user",
+		"event",
+		"events",
+		"list",
+		"array",
+		"api",
+		"github-api",
+		"get",
+		"request",
+		"promise",
+		"promises",
+		"then",
+		"async",
+		"asynchronous",
+		"asynchronously"
+	],
+	"dependencies": {
+		"gh-get": "^1.1.0",
+		"is-natural-number": "^4.0.1"
+	},
+	"devDependencies": {
+		"@shinnn/eslint-config-node": "^6.0.0",
+		"eslint": "^5.4.0",
+		"tape": "^4.6.0"
+	}
 }
